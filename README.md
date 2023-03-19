@@ -83,3 +83,23 @@ Concatenate 2 types using `or` like `string | number`.
    ```
 
    Its convention to use `CamelCase` for `enum` name and values as caps.
+
+8. Union Types Vs Literal Types
+   Union types points to a var accepting more than 1 inbuilt data type. Literal types are more specific values a var can hold.
+
+   ```js
+   let literalType: 'text' | 'otheValue';
+   ```
+
+   This therefore ensures that the var `literalType` can only hold one of the 2 specified strings.
+
+#### Type Aliases
+
+When managing types, all types that a var can take can be stored in a single `type` variable and any other var accepting the same types can refer to this alias and the types held are asigned to it. They are declared using the `type` keyword:
+
+```js
+type NumOrString = number | string;
+
+let aliasUser: NumOrString;
+aliasUser = 3;
+```
