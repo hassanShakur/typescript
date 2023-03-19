@@ -4,7 +4,7 @@
   "description": "All typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lite-server"
   },
   "author": "Hassam Shakur",
   "license": "ISC",

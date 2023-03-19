@@ -9,3 +9,6 @@ btn?.addEventListener('click', () => {
 });
 
 //? ! is to show that we are sure there will always be a value on that input element
+/*======
+HTMLInputElement is a typecast
+=======*/
