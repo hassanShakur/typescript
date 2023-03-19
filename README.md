@@ -103,3 +103,46 @@ type NumOrString = number | string;
 let aliasUser: NumOrString;
 aliasUser = 3;
 ```
+
+9.  Function Return type
+    To begin, a functions return type can be specified. If it doesn't return anything, then the `void` return type is used. Thou only specify a funcs return type if you have a reason to:
+
+    ```js
+    function someFunction(): number {
+      return 3;
+    }
+
+    function someFunction(): void {
+      return;
+    }
+    ```
+
+10. Function Type
+    These are for vars that hold functions as their values:
+
+    ```js
+    let functionVar: Function;
+    functionVar = someFunction;
+    ```
+
+#### Functions as Types
+
+Having more constrol on the type of function a var can store requires specifying what the fuction the var holds should take as parameter and should return:
+
+```js
+let specificFunctionVar: (a: number, b: string) => number;
+specificFunctionVar = someFunction;
+```
+
+This will therefore accept the specified func type or one that takes no argument but returns a `number`.
+
+11. Never Return Type
+    This is mostly for error functions that are used to throw an error and therefore stop script execution meaning nothig is returned from them:
+
+    ```js
+    function appError(message: string, code: number): never {
+      throw { message, errorCode: code };
+    }
+    ```
+
+    The same can also apply to functions with an infinite loop.
