@@ -146,3 +146,109 @@ This will therefore accept the specified func type or one that takes no argument
     ```
 
     The same can also apply to functions with an infinite loop.
+
+### Classes
+
+Basic normal structure:
+
+```js
+class Book {
+  constructor(name: string) {
+    this.name = name;
+  }
+  name: string;
+
+  information(this: Book) {
+    console.log(`This book is named ${this.name}`);
+  }
+}
+
+const book = new Book('Awesome book');
+console.log(book);
+book.information();
+```
+
+#### Initialization Shorthand
+
+Instead of declaring the attributes of a class separate then initialize them in the constructor, both of these activities can be done directly in the constructor:
+
+```js
+class Car {
+  constructor(private id: number, public name: string) {}
+}
+```
+
+#### Readonly Attributes
+
+```js
+class C {
+  public readonly name:string;
+}
+```
+
+#### Inheritance
+
+```js
+class Book {
+  constructor(public id: number, public name: string) {}
+}
+
+class DSABook extends Book {
+  constructor(public id: number, public topic: string) {
+    // Call Book constructor with a name for this class and the passed in id
+    super(id, 'DSA');
+  }
+  printBook() {
+    console.log(`Book id ${this.id} named ${this.name}`);
+  }
+}
+```
+
+#### Getters & Setters
+
+Start with keywords `get` or `set`. A getter must return something and a setter accesses a value as param and sets a class attribute. Both when called are not executed as functions.
+
+```js
+class Car {
+  constructor(public name: string) {}
+
+  set carName(name: string) {
+    this.name = name;
+  }
+
+  get carName() {
+    return this.name;
+  }
+}
+
+const car = new Car('Revo');
+car.carName = 'Toyota'; // Setter
+console.log(car.carName); // Getter
+```
+
+#### Static Properties
+
+Are properties directy associated with the class itself and not its instances. Thus a statement like `this.statFunc()` will not work.
+
+```js
+class Test {
+  static identifier = 'Value';
+  static statFunc() {}
+}
+
+Test.identifier;
+Test.statFunc();
+```
+
+#### Abstract Classes, Attributes & Methods
+
+An abstract class cannot be instantiated. It's used to create a vlueprint for all methods and/or properties that the child classes must implement in their structure. Therefore abstract attributes of this class should not be implemented and the abstract methods are not implemented.
+
+```js
+abstract class AbstractClass {
+  abstract name: string;
+  abstract informaiton(): void;
+}
+```
+
+An abstract method or prop must be in an abstract class.
