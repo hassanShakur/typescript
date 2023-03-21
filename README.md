@@ -252,3 +252,26 @@ abstract class AbstractClass {
 ```
 
 An abstract method or prop must be in an abstract class.
+
+#### Singletons & Private Constructors
+
+Involves an aspect of any particular class having only one instance. The instance is created using a static method and once created, no other can be created. Achieved using static attributes and methods and use of a private `constructor`.
+
+```js
+class Singleton {
+  private static instance: Singleton;
+  private constructor(public name: string) {}
+  static getInstance() {
+    if (this.instance) {
+      // this in statics refers to the class itself
+      return this.instance;
+    }
+    return new Singleton('Default only instance');
+  }
+}
+
+const instance = Singleton.getInstance();
+console.log(instance);
+```
+
+Therefore calling the constructor ie `new SingletonClass()` won't work as the constructor is private.
