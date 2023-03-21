@@ -275,3 +275,25 @@ console.log(instance);
 ```
 
 Therefore calling the constructor ie `new SingletonClass()` won't work as the constructor is private.
+
+### Interfaces
+
+Is a data type thingy that allows decribing the structure of an object. This may include methods & properties it may have.
+
+```js
+interface Music {
+  trackName: string;
+  playPeriod: number;
+
+  play(): void;
+}
+
+let iWantItThatWay: Music;
+iWantItThatWay = {
+  trackName: 'I want it that way',
+  playPeriod: 3.24,
+  play() {
+    console.log(`Playing ${this.trackName}`);
+  },
+};
+```
