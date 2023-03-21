@@ -289,6 +289,7 @@ interface Music {
 }
 
 let iWantItThatWay: Music;
+
 iWantItThatWay = {
   trackName: 'I want it that way',
   playPeriod: 3.24,
