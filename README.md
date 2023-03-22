@@ -323,3 +323,46 @@ let person1: Playable;
 person1 = new Player('Soccer');
 person1.playing('Hassan');
 ```
+
+The internals of an `interface` can have the modifier `readonly` implemented which will be effective in all implemented classes. It thou cannot have modifiers `public`, `private` & the likes.
+
+#### Extending Interfaces
+
+An interface can extend another interface - like in `inheritance` - and this can work for extension of more than one interface unlike in classes where they can only extend exactly 1 other class.
+
+```js
+interface InterFace1 {
+  name: string;
+}
+interface InterFace2 {
+  age: number;
+}
+interface InterFace3 extends InterFace1, InterFace2 {
+  otherName: string;
+}
+```
+
+#### Interface as FuncType
+
+Interfaces can be an alternative to the `type` for function type structure definitions. It works as:
+
+```js
+interface funcType {
+  // Params and return type
+  (num: number, num2: number): number;
+}
+
+let addFunc: funcType;
+addFunc = (a: number, b: number) => a + b;
+```
+
+### Optional Attributes & Methods
+
+Both classes and interfaces can have optional attributes & methods. Implemented with a `?` after their name. One can be optional in the interface but implemented as a must in the implementing class.
+
+```js
+class optional {
+  name?: string;
+  method?(): void;
+}
+```
