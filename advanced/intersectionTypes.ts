@@ -13,3 +13,9 @@ const appr: apprentice = {
   disciples: ['yen', 'chen'],
   skill: 'wing-chun',
 };
+
+// Type guards
+type sampleAppr = master | disciple;
+const displaySampleAppr = (appren: sampleAppr) => {
+  if ('disciples' in appren) console.log(appren.disciples);
+};

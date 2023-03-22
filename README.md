@@ -15,18 +15,18 @@ Concatenate 2 types using `or` like `string | number`.
 4. Object
    This can be written in 2 syntaxes:
 
-   ```js
+   ```ts
    // Long syntax => Done behind the scenes anyways
    const obj: {
-     name: string,
-     age: number,
+     name: string;
+     age: number;
    } = {
      name: 'Jane Doe',
      age: 20,
    };
    ```
 
-   ```js
+   ```ts
    //Normal objects
    const obj = {
      name: 'Jane Doe',
@@ -37,7 +37,7 @@ Concatenate 2 types using `or` like `string | number`.
 5. Arrays
    Can be of a particular type. Syntax is like: with `dataTypeOfArray[]`
 
-   ```js
+   ```ts
    // Array types
    let games: string[];
    games = ['hockey'];
@@ -45,7 +45,7 @@ Concatenate 2 types using `or` like `string | number`.
 
    For array with mutiple data types:
 
-   ```js
+   ```ts
    let multiple: (string | number)[];
    ```
 
@@ -54,7 +54,7 @@ Concatenate 2 types using `or` like `string | number`.
 6. Tuples
    Special arrays with an exact number of elements in an order with optional types given.
 
-   ```js
+   ```ts
    let tuple: [number, string];
    tuple = [3, ''];
    ```
@@ -62,23 +62,22 @@ Concatenate 2 types using `or` like `string | number`.
 7. Enums
    Are like objects but only identifiers are written. By default, the first element has the value `0` and so on based on their index. This index can also be set to a desired value or even string:
 
-   ```js
+   ```ts
    enum Role {
-   ADMIN,
-   USER,
-   REGULAR,
+     ADMIN,
+     USER,
+     REGULAR,
    }
    console.log(Role.ADMIN); // Prints 1
 
    // Dynamic setting
-
    ```
 
-   ```js
+   ```ts
    enum Role {
-   ADMIN = 'ADMIN',
-   USER = 9,
-   REGULAR,
+     ADMIN = 'ADMIN',
+     USER = 9,
+     REGULAR,
    }
    ```
 
@@ -87,7 +86,7 @@ Concatenate 2 types using `or` like `string | number`.
 8. Union Types Vs Literal Types
    Union types points to a var accepting more than 1 inbuilt data type. Literal types are more specific values a var can hold.
 
-   ```js
+   ```ts
    let literalType: 'text' | 'otheValue';
    ```
 
@@ -97,7 +96,7 @@ Concatenate 2 types using `or` like `string | number`.
 
 When managing types, all types that a var can take can be stored in a single `type` variable and any other var accepting the same types can refer to this alias and the types held are asigned to it. They are declared using the `type` keyword:
 
-```js
+```ts
 type NumOrString = number | string;
 
 let aliasUser: NumOrString;
@@ -107,7 +106,7 @@ aliasUser = 3;
 9.  Function Return type
     To begin, a functions return type can be specified. If it doesn't return anything, then the `void` return type is used. Thou only specify a funcs return type if you have a reason to:
 
-    ```js
+    ```ts
     function someFunction(): number {
       return 3;
     }
@@ -120,7 +119,7 @@ aliasUser = 3;
 10. Function Type
     These are for vars that hold functions as their values:
 
-    ```js
+    ```ts
     let functionVar: Function;
     functionVar = someFunction;
     ```
@@ -129,7 +128,7 @@ aliasUser = 3;
 
 Having more constrol on the type of function a var can store requires specifying what the fuction the var holds should take as parameter and should return:
 
-```js
+```ts
 let specificFunctionVar: (a: number, b: string) => number;
 specificFunctionVar = someFunction;
 ```
@@ -139,7 +138,7 @@ This will therefore accept the specified func type or one that takes no argument
 11. Never Return Type
     This is mostly for error functions that are used to throw an error and therefore stop script execution meaning nothig is returned from them:
 
-    ```js
+    ```ts
     function appError(message: string, code: number): never {
       throw { message, errorCode: code };
     }
@@ -151,7 +150,7 @@ This will therefore accept the specified func type or one that takes no argument
 
 Basic normal structure:
 
-```js
+```ts
 class Book {
   constructor(name: string) {
     this.name = name;
@@ -172,7 +171,7 @@ book.information();
 
 Instead of declaring the attributes of a class separate then initialize them in the constructor, both of these activities can be done directly in the constructor:
 
-```js
+```ts
 class Car {
   constructor(private id: number, public name: string) {}
 }
@@ -180,15 +179,15 @@ class Car {
 
 #### Readonly Attributes
 
-```js
+```ts
 class C {
-  public readonly name:string;
+  public readonly name: string;
 }
 ```
 
 #### Inheritance
 
-```js
+```ts
 class Book {
   constructor(public id: number, public name: string) {}
 }
@@ -208,7 +207,7 @@ class DSABook extends Book {
 
 Start with keywords `get` or `set`. A getter must return something and a setter accesses a value as param and sets a class attribute. Both when called are not executed as functions.
 
-```js
+```ts
 class Car {
   constructor(public name: string) {}
 
@@ -230,7 +229,7 @@ console.log(car.carName); // Getter
 
 Are properties directy associated with the class itself and not its instances. Thus a statement like `this.statFunc()` will not work.
 
-```js
+```ts
 class Test {
   static identifier = 'Value';
   static statFunc() {}
@@ -244,7 +243,7 @@ Test.statFunc();
 
 An abstract class cannot be instantiated. It's used to create a vlueprint for all methods and/or properties that the child classes must implement in their structure. Therefore abstract attributes of this class should not be implemented and the abstract methods are not implemented.
 
-```js
+```ts
 abstract class AbstractClass {
   abstract name: string;
   abstract informaiton(): void;
@@ -257,7 +256,7 @@ An abstract method or prop must be in an abstract class.
 
 Involves an aspect of any particular class having only one instance. The instance is created using a static method and once created, no other can be created. Achieved using static attributes and methods and use of a private `constructor`.
 
-```js
+```ts
 class Singleton {
   private static instance: Singleton;
   private constructor(public name: string) {}
@@ -280,7 +279,7 @@ Therefore calling the constructor ie `new SingletonClass()` won't work as the co
 
 Is a data type thingy that allows decribing the structure of an object. This may include methods & properties it may have.
 
-```js
+```ts
 interface Music {
   trackName: string;
   playPeriod: number;
@@ -303,7 +302,7 @@ iWantItThatWay = {
 
 A class can implement more than 1 interface, separated by commas unlike in inheritance where it can only inherit from 1 class. Interfaces can provide the attributes and functions that a class must implement. It differs from `abstract` classes as they can never have any instantiation or implementation of some or any of its internals.
 
-```js
+```ts
 interface Playable {
   game: string;
 
@@ -330,7 +329,7 @@ The internals of an `interface` can have the modifier `readonly` implemented whi
 
 An interface can extend another interface - like in `inheritance` - and this can work for extension of more than one interface unlike in classes where they can only extend exactly 1 other class.
 
-```js
+```ts
 interface InterFace1 {
   name: string;
 }
@@ -346,7 +345,7 @@ interface InterFace3 extends InterFace1, InterFace2 {
 
 Interfaces can be an alternative to the `type` for function type structure definitions. It works as:
 
-```js
+```ts
 interface funcType {
   // Params and return type
   (num: number, num2: number): number;
@@ -360,7 +359,7 @@ addFunc = (a: number, b: number) => a + b;
 
 Both classes and interfaces can have optional attributes & methods. Implemented with a `?` after their name. One can be optional in the interface but implemented as a must in the implementing class.
 
-```js
+```ts
 class optional {
   name?: string;
   method?(): void;
@@ -373,14 +372,14 @@ class optional {
 
 These are special types created from other types. If the type is an object, then all unique properties will be inherited, and if its a type of data types like `string | number`, then the common data type that appears in both the intersected types will be used by the inheriter. This similar logic can be implemented using `interfaces` instead of `types` and still work the same:
 
-```js
+```ts
 type master = {
-  skills: string,
-  disciples: string[],
+  skills: string;
+  disciples: string[];
 };
 
 type disciple = {
-  skill: string,
+  skill: string;
 };
 
 type apprentice = master & disciple;
@@ -390,3 +389,34 @@ const appr: apprentice = {
   skill: 'wing-chun',
 };
 ```
+
+### Type Guards
+
+In cases eg the above where a type is made of 1+ other types, there might exist a clash. Examining the code below:
+
+```ts
+const strNum: string | number;
+```
+
+When using the var for an operation, eg multiplication, it has to be checked first if it is a number or else functionality may fail. This is still the case when using the `object types` but as in this case a simple `typeof` operator can be used, for objects is different as the `typeof` will always return an object.
+
+In the example above, if the intersection was an `or`, then an apprentice may sometimes not have the `disciples` property & thus the same must be checked. One way mignt be:
+
+```ts
+type sampleAppr = master | disciple;
+const displaySampleAppr = (appren: sampleAppr) => {
+  if ('disciples' in appren) console.log(appren.disciples);
+};
+```
+
+#### InstanceOf
+
+FOr the above code, if the types `master` and `apprentice` were classes instead of types, then the checking of existance of a property in the guard clause can be done using the inbuilt `instanceof` operator for classes:
+
+```ts
+const displaySampleAppr = (appren: sampleAppr) => {
+  if (appren instanceof master) console.log(appren.disciples);
+};
+```
+
+The same won't work for interfaces as there are no interfaces in `js` , that is after `ts` compilation.
