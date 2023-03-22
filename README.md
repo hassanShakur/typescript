@@ -451,3 +451,13 @@ const creatureMove = (ani: Creature) => {
   }
 };
 ```
+
+### Type Casting
+
+When accessing dom elements using selectors like `id` and `classNames`, ts doesn't know the type of element that is selected and this accesing the operations that can be done on it eg `.value` property of `input` elements, may yield an error as the property may not exist in other html elements. Thats where type casting comes in:
+These 2 syntax can be used:
+
+```ts
+const inputEl = document.getElementById('name')! as HTMLInputElement;
+const btn = <HTMLButtonElement>document.getElementById('btn');
+```
