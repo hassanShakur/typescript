@@ -420,3 +420,34 @@ const displaySampleAppr = (appren: sampleAppr) => {
 ```
 
 The same won't work for interfaces as there are no interfaces in `js` , that is after `ts` compilation.
+
+### Discriminated Unions
+
+As the above check cannot work for interfaces, this can be used to check for such. A `literal type` can be used in each of the related interface and using this type and a switch statement, we'll be ble to determine the type of the instance the `this` is.
+
+```ts
+interface Dragon {
+  type: 'dragon';
+  flySpeed: number;
+}
+
+interface Shark {
+  type: 'shark';
+  swimSpeed: number;
+}
+
+type Creature = Dragon | Shark;
+
+const creatureMove = (ani: Creature) => {
+  let speed;
+  switch (ani.type) {
+    case 'dragon':
+      speed = ani.flySpeed;
+      break;
+
+    case 'shark':
+      speed = ani.swimSpeed;
+      break;
+  }
+};
+```
