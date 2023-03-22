@@ -366,3 +366,27 @@ class optional {
   method?(): void;
 }
 ```
+
+## Advanced
+
+### Intersection Types
+
+These are special types created from other types. If the type is an object, then all unique properties will be inherited, and if its a type of data types like `string | number`, then the common data type that appears in both the intersected types will be used by the inheriter. This similar logic can be implemented using `interfaces` instead of `types` and still work the same:
+
+```js
+type master = {
+  skills: string,
+  disciples: string[],
+};
+
+type disciple = {
+  skill: string,
+};
+
+type apprentice = master & disciple;
+const appr: apprentice = {
+  skills: 'Some skills',
+  disciples: ['yen', 'chen'],
+  skill: 'wing-chun',
+};
+```
