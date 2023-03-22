@@ -298,3 +298,28 @@ iWantItThatWay = {
   },
 };
 ```
+
+#### Class Implementing Interface
+
+A class can implement more than 1 interface, separated by commas unlike in inheritance where it can only inherit from 1 class. Interfaces can provide the attributes and functions that a class must implement. It differs from `abstract` classes as they can never have any instantiation or implementation of some or any of its internals.
+
+```js
+interface Playable {
+  game: string;
+
+  playing(person: string): void;
+}
+
+class Player implements Playable {
+  constructor(public game: string) {}
+  playing(person: string): void {
+    console.log(`${person} is playing ${this.game}`);
+  }
+}
+
+let person1: Playable;
+// or
+// let person1: Player => Both will work
+person1 = new Player('Soccer');
+person1.playing('Hassan');
+```
