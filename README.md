@@ -461,3 +461,42 @@ These 2 syntax can be used:
 const inputEl = document.getElementById('name')! as HTMLInputElement;
 const btn = <HTMLButtonElement>document.getElementById('btn');
 ```
+
+### Index Properties
+
+Useful when creating like an index but not sure on what exactly will be included in it. Example when creating errors for different input elements and therefore the type of error & error message shown is dependent on the user input:
+
+```ts
+interface ErrorInterface {
+  [prop: string]: string;
+}
+
+const emailNameError: ErrorInterface = {
+  email: 'Input a valid email',
+  name: 'Invalid name input',
+};
+```
+
+The prop data type refers to the `key` type and the other is the `value` type. Thou with string as a key type, a number can be used as key.
+
+### Function Overloads
+
+Using an example where a function takes in params that can either be a string or number and return a value based on that, a further configuration can be performed on the same function to give ts an extra clue on what the output will be based on the iput type without this, ts will shouw the return type as either a string or a number, ie the combined data type.
+
+```ts
+type strNum = string | number;
+
+// Overloads
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+
+// Actual function
+function add(a: strNum, b: strNum) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+add('a', 'b');
+add(1, 2);
+```
