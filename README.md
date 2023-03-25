@@ -500,3 +500,24 @@ function add(a: strNum, b: strNum) {
 add('a', 'b');
 add(1, 2);
 ```
+
+## Generics
+
+Refer to them as type thingys that give a general clue of what a complex data type contains or will yield in the end and such. Examples of inbuilt `generics` are `arrays` & `Promises`.
+
+```ts
+const arr: Array<number> = [1, 2, 3];
+arr[0].toFixed(2);
+
+const promise: Promise<string> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise resolved!');
+  }, 2000);
+});
+
+promise.then((data) => data.split(' '));
+```
+
+In this example, the array is defined as will be holding numbers and therefore you get ts support when accessing and working with the array elements. Same is true for the promise which is expected to return a string & therefore during thr `.then()`, ts support for string elements is available.
+
+### Smaple Generic Function
