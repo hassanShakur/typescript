@@ -521,3 +521,33 @@ promise.then((data) => data.split(' '));
 In this example, the array is defined as will be holding numbers and therefore you get ts support when accessing and working with the array elements. Same is true for the promise which is expected to return a string & therefore during thr `.then()`, ts support for string elements is available.
 
 ### Smaple Generic Function
+
+THis is in the case of creating a function that works on some data and returns something but ts is not knowledgeable of the type or components of the returned data.
+
+```ts
+function mergeObj<T extends object, U extends object>(
+  objA: T,
+  objB: U
+) {
+  return Object.assign(objA, objB);
+}
+
+const mergedObj = mergeObj({ name: 'han' }, { age: 18 });
+```
+
+This informs ts that the first param is of a certain type, same for the second and the returned value, `<>` is therefore a concat of the 2. This therefore offers support when eg extracting components of the returned value.
+
+### KeyOf Type
+
+In the sample code below, the `keyof` ensures that whenever the function is called, the second argument is always a key of the first argument as described in the generic func:
+
+```ts
+function extractValue<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return `Value ${obj[key]}`;
+}
+
+extractValue({ age: 20 }, 'age');
+```
