@@ -503,7 +503,7 @@ add(1, 2);
 
 ## Generics
 
-Refer to them as type thingys that give a general clue of what a complex data type contains or will yield in the end and such. Examples of inbuilt `generics` are `arrays` & `Promises`.
+Refer to them as type thingys that give a general clue of what a complex data type contains or will yield in the end and such. Examples of inbuilt `generics` are `arrays` & `Promises`. They are specifically used to restrict a certain item/object to a specific type of data it works with.
 
 ```ts
 const arr: Array<number> = [1, 2, 3];
