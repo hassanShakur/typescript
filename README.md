@@ -551,3 +551,28 @@ function extractValue<T extends object, U extends keyof T>(
 
 extractValue({ age: 20 }, 'age');
 ```
+
+### Generic Classes
+
+Creating flexible & type safe classes that can be constrained to a particular data type and work only with that:
+
+```ts
+class SomeStorage<T> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  get storageData() {
+    return this.data;
+  }
+}
+
+const strge = new SomeStorage<string>();
+strge.addItem('chips');
+console.log(strge.storageData);
+
+const storage2 = new SomeStorage<number>();
+storage2.addItem(1);
+```
