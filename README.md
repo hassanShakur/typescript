@@ -576,3 +576,35 @@ console.log(strge.storageData);
 const storage2 = new SomeStorage<number>();
 storage2.addItem(1);
 ```
+
+### Generic Utility Types
+
+There are extra utility types in ts including `Partial` & `Readonly`.
+
+#### ReadOnly
+
+Only allows the content tot be read and not manipulated:
+
+```ts
+const ages: Readonly<number[]> = [12, 18, 22];
+```
+
+#### Partial
+
+Allows creation of an item of a certain type or interface without full implementation as the creation is done step by step and at the end the result is converted to the target non-partial object.
+
+```ts
+interface CompleteInter {
+  a: string;
+  b: number;
+  c: Date;
+}
+
+function createAbc(a: string, b: number, c: Date): CompleteInter {
+  let completeInter: Partial<CompleteInter> = {};
+  completeInter.a = a;
+  completeInter.b = b;
+  completeInter.c = c;
+  return completeInter as CompleteInter;
+}
+```
