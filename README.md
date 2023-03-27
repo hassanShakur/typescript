@@ -608,3 +608,49 @@ function createAbc(a: string, b: number, c: Date): CompleteInter {
   return completeInter as CompleteInter;
 }
 ```
+
+## Decorators
+
+More for developers than users. It's an aspect of `metaprogramming` for soing some actions behind the scenes. When more than 1 is used, they are executed bottom up, ie the closest one to the class gets called first.
+
+### First Classs Decorator
+
+In terms of classes, they are called when the class is initialized and not when istantiated.
+
+```ts
+function Logger(constructor: Function) {
+  console.log('Decorator called');
+  console.log(constructor); // Logs the whole of SomeClass
+}
+
+@Logger
+class SomeClass {
+  constructor() {
+    console.log('Class instantiated...');
+  }
+}
+
+new SomeClass();
+```
+
+### Decorator Factories
+
+THe decorator is contained in another function that returns it thus allowing passing of auguments to the decorator. When using factories, they are called as normal functions and therefore their execution is per the order in the code. But the returned decorators still follow the bottom up exec.
+
+```ts
+function Logger(text: string) {
+  return function (constructor: Function) {
+    console.log('Decorator called' + text);
+    console.log(constructor);
+  };
+}
+
+@Logger('some text')
+```
+
+### Property Decorators
+
+This involves using decorators with other properties, not classes. They take in 2 params:
+
+1. The target - Which can be a constructor, etc that holds the property called on.
+2. Name - Property name.
