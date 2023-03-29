@@ -652,5 +652,63 @@ function Logger(text: string) {
 
 This involves using decorators with other properties, not classes. They take in 2 params:
 
-1. The target - Which can be a constructor, etc that holds the property called on.
-2. Name - Property name.
+1. The target - Which can be the prototype of the object when dealing with instance & a constructor when dealing with statics, etc that holds the property called on.
+2. Name - Property name - variable name.
+
+```ts
+function Logger(target: any, propName: string | Symbol) {
+  console.log(target, propName);
+}
+
+class Car {
+  @Logger
+  design: string;
+  constructor(d: string) {
+    this.design = d;
+  }
+}
+```
+
+### Accessors & Parameter Decorators
+
+Adds a third param in decorators for getters & setters like functions to print their info:
+
+```ts
+function Accesser(
+  target: any,
+  propName: string | Symbol,
+  descriptor: PropertyDescriptor
+) {
+  //
+}
+
+// Later in class
+class SomeClass {
+  @Accesser
+  set theDesign(design: string) {
+    this.design = design;
+  }
+}
+```
+
+The parameter decos have a difference in params, for one, the second param `name` is that of the function that contains it and second, the third param is an index for the parameter in the function:
+
+```ts
+function ParamDecorator(
+  target: any,
+  propName: string | Symbol,
+  position: number
+) {
+  //
+}
+
+class Car {
+  someFunc(@ParamDecorator param: string) {
+    console.log(param);
+  }
+}
+```
+
+### Method Decorator
+
+SImilar to the accesor ones with a difference in the `descriptor` contents. The syntax remains the same though, and is added before a class method.
