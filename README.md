@@ -711,4 +711,36 @@ class Car {
 
 ### Method Decorator
 
-SImilar to the accesor ones with a difference in the `descriptor` contents. The syntax remains the same though, and is added before a class method.
+SImilar to the accesor ones with a difference in the `descriptor` contents. The syntax remains the same though, and is added before a class method. LOOK INTO PROPERTY DESCRIPTORS! (configurable, enumerable, value, writable)
+
+### Returning from Class Decorator
+
+Class decorators can return a constructor funtion that replaces the original one in the class, or add functionality to it. This constructor can work just like any other with logic that might be needed whenever the class is instantiated. The logic is as below:
+
+```ts
+function Logger() {
+  return function <
+    T extends { new (...args: any[]): { name: string } }
+  >(originalonstructor: T) {
+    return class extends originalonstructor {
+      constructor(..._: any) {
+        super();
+        // logic for when instantiation happens
+      }
+    };
+  };
+}
+
+@Logger()
+class SomeClass {
+  constructor(public name: string) {
+    console.log('Class instantiated...');
+  }
+}
+
+new SomeClass('person');
+```
+
+### Other Deco Returns
+
+Returns from property & parameter decorators are ignored thus have no effect.
