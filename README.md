@@ -41,6 +41,7 @@
     - [Method Decorator](#method-decorator)
     - [Returning from Class Decorator](#returning-from-class-decorator)
     - [Other Deco Returns](#other-deco-returns)
+  - [Modules](#modules)
 
 ## Basics
 
@@ -804,3 +805,7 @@ function Binder(_: any, _2: string, descriptor: PropertyDescriptor) {
 ```
 
 What this does is that it ensures the `originalMethod` from which the decorator is called, always has its `this` bound to the function itself as the `newDescriptor` that is returned replaces the old one. This can be an encapsulation and help prevent `binding` the method whenever it is called by other items.
+
+// TODO - Review the drag drop project
+
+## Modules
