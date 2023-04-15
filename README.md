@@ -809,5 +809,3 @@ What this does is that it ensures the `originalMethod` from which the decorator 
 // TODO - Review the drag drop project
 
 ## Modules
-
-Separating code to chunks avoiding congestion.
