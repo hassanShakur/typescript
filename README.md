@@ -814,9 +814,39 @@ What this does is that it ensures the `originalMethod` from which the decorator 
 ## Side Liners
 
 1. Importing html elements to js:
+
    ```ts
    const importNode = document.importNode(
      SelectedHTMLElement.content,
      true
    );
+   ```
+
+2. Draggers
+
+   ```ts
+   dragStartHandler(event: DragEvent){
+    // setData(format, dataToSet)
+    event.dataTransfer!.setData('text/plain', identifierForTheDraggedData);
+    // For cursor and browser indications
+    event.dataTransfer!.effectAllowed = 'move'; // Or copy
+   }
+
+   dragEndHandler(){}
+
+   dragOverHandler(event: DragEvent){
+    if(event.dataTransfer && event.dataTransfer.types[0] === 'text/plain'){
+      event.preventDefault()
+      // Adding droppable classes for visual effects
+    }
+   }
+
+   dragLeaveHandler(){
+      // Removing droppable classes for visual effects
+
+   }
+
+   dropHandler(e: DragEvent){
+    itemId = e.dataTransfer!.getData('text/plain')
+   }
    ```
