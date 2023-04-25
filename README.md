@@ -42,6 +42,7 @@
     - [Returning from Class Decorator](#returning-from-class-decorator)
     - [Other Deco Returns](#other-deco-returns)
   - [Modules](#modules)
+  - [Side Liners](#side-liners)
 
 ## Basics
 
@@ -809,3 +810,13 @@ What this does is that it ensures the `originalMethod` from which the decorator 
 // TODO - Review the drag drop project
 
 ## Modules
+
+## Side Liners
+
+1. Importing html elements to js:
+   ```ts
+   const importNode = document.importNode(
+     SelectedHTMLElement.content,
+     true
+   );
+   ```
