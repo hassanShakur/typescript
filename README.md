@@ -42,6 +42,7 @@
     - [Returning from Class Decorator](#returning-from-class-decorator)
     - [Other Deco Returns](#other-deco-returns)
   - [Modules](#modules)
+    - [Namespaces](#namespaces)
   - [Side Liners](#side-liners)
 
 ## Basics
@@ -810,6 +811,34 @@ What this does is that it ensures the `originalMethod` from which the decorator 
 // TODO - Review the drag drop project
 
 ## Modules
+
+### Namespaces
+
+Including code in a similar namespace aallows for code splitting through exorts between files. Ensure the `"outFile": "./dist/bundle.js"` in the `tsconfig` is enabled refering to where the bundled file will be compiled to as `js` does not support namespaces. Also set the `"module": "commonjs"` to something like `amd` or `system` which support `outFile` instead of commonjs.
+
+Therefore in the exporting file:
+
+```ts
+namespace namespaceName {
+  export const obj = {};
+  export class MyClass {}
+  export enum nums {
+    one,
+    two,
+    three,
+  }
+  export const val: number = 1;
+}
+```
+
+Then in the importing file, the namespace must match the exporting namespace and add a special signal at the file beginning which starts with 3 slashes and is not a regular comment:
+
+```ts
+/// <reference path='exportingFileName.ts'/>
+namespace namespaceName {
+  // Use the exported items
+}
+```
 
 ## Side Liners
 
