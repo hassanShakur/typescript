@@ -44,6 +44,9 @@
   - [Modules](#modules)
     - [Namespaces](#namespaces)
     - [ES Modules Export](#es-modules-export)
+  - [TS With Webpack](#ts-with-webpack)
+    - [Installs](#installs)
+    - [Setup](#setup)
   - [Side Liners](#side-liners)
 
 ## Basics
@@ -853,7 +856,37 @@ export const item = {};
 import { namedExport } from './path/to/file.js';
 ```
 
-The imported file should be a `.js` file since the import is after compilation. Also to note is that `es modules` are not supported by the `outFile` therefore it should be commented out and the module set bck to something like `commonjs`. Also set  the `type="module"` in the script tag in the html.
+The imported file should be a `.js` file since the import is after compilation. Also to note is that `es modules` are not supported by the `outFile` therefore it should be commented out and the module set bck to something like `commonjs`. Also set the `type="module"` in the script tag in the html.
+
+## TS With Webpack
+
+### Installs
+
+```sh
+npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-server clean-webpack-plugin
+```
+
+`ts-loader` informs webpack on how to convert `ts` to `js` so that `webpack` can do both the compilation and the bundling of the compiled js.
+
+### Setup
+
+Start by removing the `.js` extension in all imports. The configure a file `webpack.config.js` s it is in the files. Also add a script to trigger webpack in the `package.json`:
+
+```json
+script{
+  "start": "webpack-dev-server",
+  "build": "webpack"
+}
+```
+
+You can also set up a webpack.config for production as in `webpack.config.prod.js`, name as you please.
+`clean-webpack-plugin` is used to delete all compiled files whenever the code changes. Implementation is in as the above file. Thereafter tweak the `build` script with the new prod file name:
+
+```json
+script{
+  "build": "webpack --config webpack.config.prod.js"
+}
+```
 
 ## Side Liners
 
