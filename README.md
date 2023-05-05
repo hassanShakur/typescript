@@ -43,6 +43,7 @@
     - [Other Deco Returns](#other-deco-returns)
   - [Modules](#modules)
     - [Namespaces](#namespaces)
+    - [ES Modules Export](#es-modules-export)
   - [Side Liners](#side-liners)
 
 ## Basics
@@ -839,6 +840,20 @@ namespace namespaceName {
   // Use the exported items
 }
 ```
+
+### ES Modules Export
+
+Done in the original `js` es export import routine.
+
+```ts
+// Exporter
+export const item = {};
+
+// Importer
+import { namedExport } from './path/to/file.js';
+```
+
+The imported file should be a `.js` file since the import is after compilation. Also to note is that `es modules` are not supported by the `outFile` therefore it should be commented out and the module set bck to something like `commonjs`. Also set  the `type="module"` in the script tag in the html.
 
 ## Side Liners
 
