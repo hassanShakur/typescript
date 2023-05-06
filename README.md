@@ -47,6 +47,8 @@
   - [TS With Webpack](#ts-with-webpack)
     - [Installs](#installs)
     - [Setup](#setup)
+  - [3rd Party Packages](#3rd-party-packages)
+    - [Ts 3rd Parties](#ts-3rd-parties)
   - [Side Liners](#side-liners)
 
 ## Basics
@@ -887,6 +889,26 @@ script{
   "build": "webpack --config webpack.config.prod.js"
 }
 ```
+
+## 3rd Party Packages
+
+To use 3rd parties written in vanilla js in ts, use its `types`. Example with `lodash`, install it together with its types (lodash types):
+
+```sh
+npm i --save-dev @types/lodash
+```
+
+The types are normally `@types/package-name`.
+If a package's types do not exist, for one you can use the `declare` keyword to ascertain to ts that it will exist. Example with a var `x` in the `script` tag in html that has been inititalized, ts can be made awae of it and use it by using:
+
+```ts
+declare var x: any;
+```
+
+### Ts 3rd Parties
+
+- class-transformers - Transfoeming objects to native classes.
+- class-validator
 
 ## Side Liners
 
