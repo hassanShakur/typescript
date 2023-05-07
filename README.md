@@ -49,6 +49,7 @@
     - [Setup](#setup)
   - [3rd Party Packages](#3rd-party-packages)
     - [Ts 3rd Parties](#ts-3rd-parties)
+  - [Node With ts](#node-with-ts)
   - [Side Liners](#side-liners)
 
 ## Basics
@@ -909,6 +910,20 @@ declare var x: any;
 
 - class-transformers - Transfoeming objects to native classes.
 - class-validator
+
+## Node With ts
+
+In the tsconfig:
+
+```json
+{
+  "moduleResolution": "node",
+  "outDir": "./dist",
+  "rootDir": "./src"
+}
+```
+
+Install `@types/node`, `@types/express`.
 
 ## Side Liners
 
